@@ -3,22 +3,24 @@ import './App.css';
 
 function App() {
   const generateHexes = (num) => {
-    const hexChar = "0123456789ABCDEF";
-
     const hexes = [];
     for (let n = 0; n < num; n++) {
       let hexObj = {
-        hexString: "",
+        hexString: randomHex(),
         correct: n === 0 ? true : false,
       };
-      for (let i = 0; i < 6; i++) {
-        hexObj.hexString += hexChar.charAt(Math.floor(Math.random() * 16));
-      }
       hexes.push(hexObj);
-
     }
-    console.log(hexes)
     return hexes
+  }
+
+  const randomHex = () => {
+    const hexChar = "0123456789ABCDEF";
+    let hexString = ""
+    for (let i = 0; i < 6; i++) {
+      hexString += hexChar.charAt(Math.floor(Math.random() * 16));
+    }
+    return hexString;
   }
 
   const rightGuess = () => {
@@ -47,7 +49,7 @@ function App() {
         </div>
 
         {hexArray.map((hex) =>
-          <button key={hex.hexString} onClick={hex.correct? rightGuess : ''}>{hex.hexString}</button>
+          <button key={hex.hexString} onClick={hex.correct ? rightGuess : ''}>{hex.hexString}</button>
         )}
         <p>{score}</p>
       </div>
