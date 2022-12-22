@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
   const shuffleArray = (unshuffled) => {
     let shuffled = unshuffled
       .map(value => ({ value, sort: Math.random() }))
@@ -18,6 +19,7 @@ function App() {
   ]);
   const [shuffledArray, setShuffledArray] = useState(shuffleArray(hexArray))
   const [score, setScore] = useState(0);
+  const [streak, setStreak] = useState(0);
 
   //update the shuffle array anytime hex array is updated
   useEffect(() => {
@@ -62,18 +64,20 @@ function App() {
     console.log('right')
     setHexArray((generateHexes(difficulty)));
     setScore((prevScore) => prevScore + 1);
+    setStreak((prevStreak) => prevStreak + 1);
   }
 
   const wrongGuess = () => {
     console.log('wrong')
     setScore((prevScore) => prevScore - 1);
+    setStreak(0);
   }
 
   const BOXSTYLE = {
     position: 'relative',
     backgroundColor: `#${hexArray[0].hexString}`,
-    width: '8rem',
-    height: '6rem',
+    width: '20%',
+    height: '40%',
     margin: 'auto',
     textAlign: 'center',
     marginTop: '2rem',
@@ -89,7 +93,8 @@ function App() {
         {shuffledArray.map((hex) =>
           <button key={hex.hexString} onClick={hex.correct ? rightGuess : wrongGuess}>{hex.hexString}</button>
         )}
-        <p>{score}</p>
+        <p>Score: {score}</p>
+        <p>Streak: {streak}</p>
       </div>
     </>
   );
