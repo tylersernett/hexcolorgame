@@ -11,7 +11,8 @@ function App() {
     return shuffled;
   }
 
-  const [difficulty, setDifficulty] = useState(4)
+  const [textIsColored, setTextIsColored] = useState(false);
+  const [difficulty, setDifficulty] = useState(4);
   const [hexArray, setHexArray] = useState([
     { hexString: 'FF0000', correct: true },
     { hexString: '00FF00', correct: false },
@@ -73,6 +74,10 @@ function App() {
     setStreak(0);
   }
 
+  const toggleTextColor = () => {
+    setTextIsColored(!textIsColored);
+  }
+
   const BOXSTYLE = {
     position: 'relative',
     backgroundColor: `#${hexArray[0].hexString}`,
@@ -91,10 +96,19 @@ function App() {
         </div>
 
         {shuffledArray.map((hex) =>
-          <button key={hex.hexString} onClick={hex.correct ? rightGuess : wrongGuess}>{hex.hexString}</button>
+          <button key={hex.hexString} onClick={hex.correct ? rightGuess : wrongGuess}>#{
+            textIsColored ?
+              <>
+                <span style={{ color: 'red' }}>{hex.hexString.slice(0, 2)}</span>
+                <span style={{ color: 'green' }}>{hex.hexString.slice(2, 4)}</span>
+                <span style={{ color: 'blue' }}>{hex.hexString.slice(4, 6)}</span>
+              </>
+            : hex.hexString}
+          </button>
         )}
         <p>Score: {score}</p>
         <p>Streak: {streak}</p>
+        <input type='checkbox' checked={textIsColored} onChange={toggleTextColor} />Color Text?
       </div>
     </>
   );
