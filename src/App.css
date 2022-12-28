@@ -2,4 +2,21 @@
   margin:auto;
   text-align: center;
   height: 100vh;
+  width: 30%
+}
+
+.answer-box {
+  padding-top: .125rem;
+  display: grid;
+  /* grid-template-rows: 40px; */
+  grid-template-columns: 1fr 1fr 1fr;
+  margin:auto;
+  text-align: center;
+  width:auto;
+}
+
+.answer-button {
+  font-size:calc(100% + .125vw);
+  background-color: white;
+  border-radius: 8px;
 }

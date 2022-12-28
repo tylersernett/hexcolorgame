@@ -81,34 +81,37 @@ function App() {
   const BOXSTYLE = {
     position: 'relative',
     backgroundColor: `#${hexArray[0].hexString}`,
-    width: '20%',
+    width: 'auto',
     height: '40%',
     margin: 'auto',
     textAlign: 'center',
     marginTop: '2rem',
-    padding: '2rem'
+    padding: '2rem',
+    borderRadius: '8px',
   }
 
   return (
     <>
       <div className='container'>
-        <div className='colorBox' style={BOXSTYLE}>
+        <div className='color-rectangle' style={BOXSTYLE}>
         </div>
 
-        {shuffledArray.map((hex) =>
-          <button key={hex.hexString} onClick={hex.correct ? rightGuess : wrongGuess}>#{
-            textIsColored ?
-              <>
-                <span style={{ color: 'red' }}>{hex.hexString.slice(0, 2)}</span>
-                <span style={{ color: 'green' }}>{hex.hexString.slice(2, 4)}</span>
-                <span style={{ color: 'blue' }}>{hex.hexString.slice(4, 6)}</span>
-              </>
-            : hex.hexString}
-          </button>
-        )}
+        <div className='answer-box'>
+          {shuffledArray.map((hex) =>
+            <button className='answer-button' key={hex.hexString} onClick={hex.correct ? rightGuess : wrongGuess}>#{
+              textIsColored ?
+                <>
+                  <span style={{ color: 'red' }}>{hex.hexString.slice(0, 2)}</span>
+                  <span style={{ color: 'green' }}>{hex.hexString.slice(2, 4)}</span>
+                  <span style={{ color: 'blue' }}>{hex.hexString.slice(4, 6)}</span>
+                </>
+                : hex.hexString}
+            </button>
+          )}
+        </div>
         <p>Score: {score}</p>
         <p>Streak: {streak}</p>
-        <input type='checkbox' checked={textIsColored} onChange={toggleTextColor} />Color Text?
+        <input type='checkbox' checked={textIsColored} onChange={toggleTextColor} />Color Text
       </div>
     </>
   );
