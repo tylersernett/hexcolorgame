@@ -85,13 +85,16 @@ function App() {
     height: '40%',
     margin: 'auto',
     textAlign: 'center',
-    marginTop: '2rem',
+    marginTop: '1rem',
     padding: '2rem',
     borderRadius: '8px',
   }
 
   return (
     <>
+    <div className='title'>
+      Hex Color Trainer
+    </div>
       <div className='container'>
         <div className='color-rectangle' style={BOXSTYLE}>
         </div>
