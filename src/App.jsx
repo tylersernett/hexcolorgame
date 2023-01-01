@@ -82,7 +82,7 @@ function App() {
     position: 'relative',
     backgroundColor: `#${hexArray[0].hexString}`,
     width: 'auto',
-    height: '40%',
+    height: '30%',
     margin: 'auto',
     textAlign: 'center',
     marginTop: '1rem',

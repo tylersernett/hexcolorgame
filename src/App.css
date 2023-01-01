@@ -4,24 +4,28 @@
 }
 
 .container {
-  margin:auto;
+  margin: auto;
   text-align: center;
   height: 100vh;
-  width: 30%
+  width: 40%
 }
 
 .answer-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   padding-top: .125rem;
-  display: grid;
-  /* grid-template-rows: 40px; */
-  grid-template-columns: 1fr 1fr 1fr;
-  margin:auto;
-  text-align: center;
-  width:auto;
+  width: auto;
 }
 
 .answer-button {
-  font-size:calc(100% + .125vw);
+  font-family: monospace;
+  font-size: calc(100% + .35vw);
+  flex: 1 1 0;
   background-color: white;
   border-radius: 8px;
+}
+
+.answer-button:hover {
+  background-color: #EEE;
 }
