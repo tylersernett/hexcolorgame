@@ -82,7 +82,7 @@ function App() {
     return (
       <>
         <div className='title'>
-          <h1>HEX<span className = 'hex-text'>⬣</span><span className = 'sub-title'>Color Trainer</span></h1>
+          <h1>HEX<span className='hex-text'>⬣</span></h1><span className='sub-title'>color trainer</span>
         </div>
       </>
     )
@@ -96,15 +96,17 @@ function App() {
     height: '30%',
     margin: 'auto',
     textAlign: 'center',
-    marginTop: '1rem',
-    padding: '2rem',
+    margin: '0',
+    padding: '0',
     borderRadius: '8px',
   }
 
+  //TODO: dark mode
+
   return (
     <>
-      <Title />
       <div className='container'>
+        <Title />
         <div className='color-rectangle' style={BOXSTYLE}>
         </div>
 
@@ -121,9 +123,11 @@ function App() {
             </button>
           )}
         </div>
-        <p>Score: {score}</p>
-        <p>Streak: {streak}</p>
-        <input type='checkbox' checked={textIsColored} onChange={toggleTextColor} />Color Text
+        <div className='stats'>
+          <div className='stats-block' >Score: {score}</div>
+          <div className='stats-block' >Streak: {streak}</div>
+        </div>
+          <div className='check-block' ><input type='checkbox' checked={textIsColored} onChange={toggleTextColor} />Color Text</div>
       </div>
     </>
   );
