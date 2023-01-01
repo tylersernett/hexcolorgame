@@ -1,6 +1,23 @@
 .title {
   text-align: center;
-  font-size: 48px;
+}
+
+.hex-text {
+  display: inline-block;
+  transform: translate(-20%, -6.5%)
+}
+
+h1 {
+  margin: 0;
+  font-size: 15vh
+}
+
+.sub-title {
+  display: block;
+  margin: 0;
+  padding: 0;
+  line-height: 1vh;
+  font-size: 5vh;
 }
 
 .container {

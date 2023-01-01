@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
@@ -78,6 +78,17 @@ function App() {
     setTextIsColored(!textIsColored);
   }
 
+  const Title = () => {
+    return (
+      <>
+        <div className='title'>
+          <h1>HEX<span className = 'hex-text'>⬣</span><span className = 'sub-title'>Color Trainer</span></h1>
+        </div>
+      </>
+    )
+  }
+
+
   const BOXSTYLE = {
     position: 'relative',
     backgroundColor: `#${hexArray[0].hexString}`,
@@ -92,9 +103,7 @@ function App() {
 
   return (
     <>
-    <div className='title'>
-      Hex Color Trainer
-    </div>
+      <Title />
       <div className='container'>
         <div className='color-rectangle' style={BOXSTYLE}>
         </div>
