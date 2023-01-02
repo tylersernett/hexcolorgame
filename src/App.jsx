@@ -14,9 +14,9 @@ function App() {
   const [textIsColored, setTextIsColored] = useState(false);
   const [difficulty, setDifficulty] = useState(4);
   const [hexArray, setHexArray] = useState([
-    { hexString: 'FF0000', correct: true },
-    { hexString: '00FF00', correct: false },
-    { hexString: '0000FF', correct: false },
+    { hexString: 'FF0000', correct: true, touched: false },
+    { hexString: '00FF00', correct: false, touched: false },
+    { hexString: '0000FF', correct: false, touched: false },
   ]);
   const [shuffledArray, setShuffledArray] = useState(shuffleArray(hexArray))
   const [score, setScore] = useState(0);
@@ -35,16 +35,18 @@ function App() {
     }
   }, [score])
 
+  //create an array of objects: {hexString, correct bool, touched bool}
   const generateHexes = (num) => {
     const hexes = [];
     for (let n = 0; n < num; n++) {
       let hexObj = {
         hexString: randomHex(),
-        correct: n === 0 ? true : false,
+        correct: n === 0 ? true : false, //0th is always correct answer
+        touched: false,
       };
       hexes.push(hexObj);
     }
-    console.log(hexes)
+    console.log('fresh hexes:', hexes)
     return hexes
   }
 
@@ -64,8 +66,12 @@ function App() {
     setStreak((prevStreak) => prevStreak + 1);
   }
 
-  const wrongGuess = () => {
-    console.log('wrong')
+  const wrongGuess = (hexObj) => {
+    let index = shuffledArray.indexOf(hexObj);
+    let tempArr = [...shuffledArray]
+    tempArr[index].touched = true;
+    setShuffledArray(tempArr)//??? is the state necessary here?
+    console.log('touched:', tempArr)
     setScore((prevScore) => prevScore - 1);
     setStreak(0);
   }
@@ -74,6 +80,7 @@ function App() {
     setTextIsColored(!textIsColored);
   }
 
+  //???Transition doesn't work when rendered as component, only direct inline rendering works.
   const Title = () => {
     return (
       <>
@@ -102,7 +109,6 @@ function App() {
   }
 
   //TODO: dark mode
-  //TODO: wrong answers reveal color on button
 
   return (
     <>
@@ -114,15 +120,18 @@ function App() {
         </div>
 
         <div className='answer-box'>
-          {shuffledArray.map((hex) =>
-            <button className='answer-button' key={hex.hexString} onClick={hex.correct ? rightGuess : wrongGuess}>#{
+          {shuffledArray.map((hexObj) =>
+            <button className='answer-button' 
+            key={hexObj.hexString} 
+            onClick={hexObj.correct ? rightGuess : ()=> wrongGuess(hexObj)}
+            style={hexObj.touched ? {backgroundColor:`#${hexObj.hexString}` } : { }}>#{
               textIsColored ?
                 <>
-                  <span style={{ color: 'red' }}>{hex.hexString.slice(0, 2)}</span>
-                  <span style={{ color: 'green' }}>{hex.hexString.slice(2, 4)}</span>
-                  <span style={{ color: 'blue' }}>{hex.hexString.slice(4, 6)}</span>
+                  <span style={{ color: 'red' }}>{hexObj.hexString.slice(0, 2)}</span>
+                  <span style={{ color: 'green' }}>{hexObj.hexString.slice(2, 4)}</span>
+                  <span style={{ color: 'blue' }}>{hexObj.hexString.slice(4, 6)}</span>
                 </>
-                : hex.hexString}
+                : hexObj.hexString}
             </button>
           )}
         </div>
