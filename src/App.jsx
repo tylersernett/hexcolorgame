@@ -31,7 +31,7 @@ function App() {
     if (score < 0) {
       setDifficulty(2);
     } else {
-    setDifficulty( Math.floor(score / 5) + 3)
+      setDifficulty(Math.floor(score / 5) + 3)
     }
   }, [score])
 
@@ -78,12 +78,16 @@ function App() {
     return (
       <>
         <div className='title'>
-          <h1>HEX<span className='hex-text'>⬣</span></h1><span className='sub-title'>⁄⁄color trainer</span>
+          <h1>HEX<span className='hex-text' style={HEXSTYLE}>⬣</span></h1><span className='sub-title'>⁄⁄color trainer</span>
         </div>
       </>
     )
   }
 
+  const HEXSTYLE = {
+    color: `#${hexArray[0].hexString}`,
+    transition: '0.7s color ease-in-out',
+  }
 
   const BOXSTYLE = {
     position: 'relative',
@@ -92,9 +96,9 @@ function App() {
     height: '30%',
     margin: 'auto',
     textAlign: 'center',
-    margin: '0',
     padding: '0',
     borderRadius: '8px',
+    transition: '0.5s background-color ease-in-out',
   }
 
   //TODO: dark mode
@@ -103,7 +107,9 @@ function App() {
   return (
     <>
       <div className='container'>
-        <Title />
+        <div className='title' >
+          <h1>HEX<span className='hex-text' style={HEXSTYLE}>⬣</span></h1><span className='sub-title'>⁄⁄color trainer</span>
+        </div>
         <div className='color-rectangle' style={BOXSTYLE}>
         </div>
 
@@ -125,7 +131,7 @@ function App() {
           <div className='stats-block' id='pipe'>\\</div>
           <div className='stats-block' id='streak'>Streak: {streak}</div>
         </div>
-          <div className='check-block' ><input type='checkbox' checked={textIsColored} onChange={toggleTextColor} />Color Text</div>
+        <div className='check-block' ><input type='checkbox' checked={textIsColored} onChange={toggleTextColor} />Color Text</div>
       </div>
     </>
   );
