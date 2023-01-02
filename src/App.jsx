@@ -82,7 +82,7 @@ function App() {
     return (
       <>
         <div className='title'>
-          <h1>HEX<span className='hex-text'>⬣</span></h1><span className='sub-title'>color trainer</span>
+          <h1>HEX<span className='hex-text'>⬣</span></h1><span className='sub-title'>⁄⁄color trainer</span>
         </div>
       </>
     )
@@ -102,6 +102,7 @@ function App() {
   }
 
   //TODO: dark mode
+  //TODO: wrong answers reveal color on button
 
   return (
     <>
@@ -124,8 +125,9 @@ function App() {
           )}
         </div>
         <div className='stats'>
-          <div className='stats-block' >Score: {score}</div>
-          <div className='stats-block' >Streak: {streak}</div>
+          <div className='stats-block' id='score' >Score: {score}</div>
+          <div className='stats-block' id='pipe'>\\</div>
+          <div className='stats-block' id='streak'>Streak: {streak}</div>
         </div>
           <div className='check-block' ><input type='checkbox' checked={textIsColored} onChange={toggleTextColor} />Color Text</div>
       </div>
