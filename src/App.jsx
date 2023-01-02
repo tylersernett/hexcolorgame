@@ -28,15 +28,11 @@ function App() {
   }, [hexArray])
 
   useEffect(() => {
-    if (score >= 10) {
-      setDifficulty(5);
-    } else if (score >= 5) {
-      setDifficulty(4);
-    } else if (score >= 0) {
-      setDifficulty(3);
-    } else {
+    if (score < 0) {
       setDifficulty(2);
-    };
+    } else {
+    setDifficulty( Math.floor(score / 5) + 3)
+    }
   }, [score])
 
   const generateHexes = (num) => {
