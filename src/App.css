@@ -86,19 +86,22 @@ h1 {
 }
 
 #score {
-  width: 33%;
+  width: 40%;
+  margin-right: auto;
+  text-align: left;
 }
 
 #pipe {
-  width: 33%;
+  width: 20%;
   margin: auto;
   text-align: center;
   /* border: 1px solid red; */
 }
 
 #streak {
-  width: 33%;
+  width: 40%;
   margin-left: auto;
+  text-align: right;
   /* border: 1px solid red; */
 }
 
