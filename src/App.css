@@ -37,7 +37,7 @@ h1 {
   .title {
     text-align: center;
   }
-  
+
   h1 {
     margin-top: -5%;
   }
@@ -76,8 +76,8 @@ h1 {
 }
 
 .stats {
-  /* font-family: Menlo, monospace; */
-  font-family: 'Helvetica Neue';
+  font-family: Menlo, monospace;
+  /* font-family: 'Helvetica Neue'; */
   font-size: calc(100% + .5vw);
   display: flex;
   flex-wrap: wrap;
@@ -86,20 +86,21 @@ h1 {
 }
 
 #score {
-  width: 40%;
+  width: 45%;
   margin-right: auto;
   text-align: left;
 }
 
 #pipe {
-  width: 20%;
+  font-family: 'Helvetica Neue';
+  width: 10%;
   margin: auto;
   text-align: center;
   /* border: 1px solid red; */
 }
 
 #streak {
-  width: 40%;
+  width: 45%;
   margin-left: auto;
   text-align: right;
   /* border: 1px solid red; */
