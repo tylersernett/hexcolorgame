@@ -31,7 +31,7 @@ function App() {
     if (score < 0) {
       setDifficulty(2);
     } else {
-      setDifficulty(Math.floor(score / 5) + 3)
+      setDifficulty(Math.floor((score+1) / 5) + 3)
     }
   }, [score])
 
@@ -67,11 +67,18 @@ function App() {
   }
 
   const wrongGuess = (hexObj) => {
-    let index = shuffledArray.indexOf(hexObj);
-    let tempArr = [...shuffledArray]
-    tempArr[index].touched = true;
-    setShuffledArray(tempArr)//??? is the state necessary here?
-    console.log('touched:', tempArr)
+    //map through current array. If id match, return new touched object.
+    //Else, return original object.
+    setShuffledArray(shuffledArray.map(hex => {
+      if (hex.hexString === hexObj.hexString) {
+        // Create a *new* object with changes
+        return { ...hex, touched: true };
+      } else {
+        // No changes -- return original object
+        return hex;
+      }
+    }));
+    console.log('touched:', shuffledArray)
     setScore((prevScore) => prevScore - 1);
     setStreak(0);
   }
@@ -109,6 +116,7 @@ function App() {
   }
 
   //TODO: dark mode
+  //TODO: colored text shows degree of color
 
   return (
     <>
@@ -127,9 +135,9 @@ function App() {
             style={hexObj.touched ? {backgroundColor:`#${hexObj.hexString}` } : { }}>#{
               textIsColored ?
                 <>
-                  <span style={{ color: 'red' }}>{hexObj.hexString.slice(0, 2)}</span>
-                  <span style={{ color: 'green' }}>{hexObj.hexString.slice(2, 4)}</span>
-                  <span style={{ color: 'blue' }}>{hexObj.hexString.slice(4, 6)}</span>
+                  <span style={{ color: '#EE0000' }}>{hexObj.hexString.slice(0, 2)}</span>
+                  <span style={{ color: '#00BB00' }}>{hexObj.hexString.slice(2, 4)}</span>
+                  <span style={{ color: '#0000FF' }}>{hexObj.hexString.slice(4, 6)}</span>
                 </>
                 : hexObj.hexString}
             </button>
