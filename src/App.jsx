@@ -21,6 +21,7 @@ function App() {
   const [shuffledArray, setShuffledArray] = useState(shuffleArray(hexArray))
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
+  const [theme, setTheme] = useState('light');
 
   //update the shuffle array anytime hex array is updated
   useEffect(() => {
@@ -31,7 +32,7 @@ function App() {
     if (score < 0) {
       setDifficulty(2);
     } else {
-      setDifficulty(Math.floor((score+1) / 5) + 3)
+      setDifficulty(Math.floor((score + 1) / 5) + 3)
     }
   }, [score])
 
@@ -87,11 +88,22 @@ function App() {
     setTextIsColored(!textIsColored);
   }
 
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  };
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
   //???Transition doesn't work when rendered as component, only direct inline rendering works.
   const Title = () => {
     return (
       <>
-        <div className='title'>
+        <div className='title' >
           <h1>HEX<span className='hex-text' style={HEXSTYLE}>⬣</span></h1><span className='sub-title'>⁄⁄color trainer</span>
         </div>
       </>
@@ -120,7 +132,7 @@ function App() {
 
   return (
     <>
-      <div className='container'>
+      <div className={`container ${theme}`}>
         <div className='title' >
           <h1>HEX<span className='hex-text' style={HEXSTYLE}>⬣</span></h1><span className='sub-title'>⁄⁄color trainer</span>
         </div>
@@ -129,17 +141,17 @@ function App() {
 
         <div className='answer-box'>
           {shuffledArray.map((hexObj) =>
-            <button className='answer-button' 
-            key={hexObj.hexString} 
-            onClick={hexObj.correct ? rightGuess : ()=> wrongGuess(hexObj)}
-            style={hexObj.touched ? {backgroundColor:`#${hexObj.hexString}` } : { }}>#{
-              textIsColored ?
-                <>
-                  <span style={{ color: '#EE0000' }}>{hexObj.hexString.slice(0, 2)}</span>
-                  <span style={{ color: '#00BB00' }}>{hexObj.hexString.slice(2, 4)}</span>
-                  <span style={{ color: '#0000FF' }}>{hexObj.hexString.slice(4, 6)}</span>
-                </>
-                : hexObj.hexString}
+            <button className='answer-button'
+              key={hexObj.hexString}
+              onClick={hexObj.correct ? rightGuess : () => wrongGuess(hexObj)}
+              style={hexObj.touched ? { backgroundColor: `#${hexObj.hexString}` } : {}}>#{
+                textIsColored ?
+                  <>
+                    <span style={{ color: '#EE0000' }}>{hexObj.hexString.slice(0, 2)}</span>
+                    <span style={{ color: '#00BB00' }}>{hexObj.hexString.slice(2, 4)}</span>
+                    <span style={{ color: '#0000FF' }}>{hexObj.hexString.slice(4, 6)}</span>
+                  </>
+                  : hexObj.hexString}
             </button>
           )}
         </div>
@@ -149,6 +161,7 @@ function App() {
           <div className='stats-block' id='streak'>Streak: {streak}</div>
         </div>
         <div className='check-block' ><input type='checkbox' checked={textIsColored} onChange={toggleTextColor} />Color Text</div>
+        <button onClick={toggleTheme}>Toggle Theme</button>
       </div>
     </>
   );
