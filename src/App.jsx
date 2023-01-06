@@ -155,13 +155,27 @@ function App() {
             </button>
           )}
         </div>
+        
         <div className='stats'>
           <div className='stats-block' id='score' >Score: {score}</div>
           <div className='stats-block' id='pipe'>\\</div>
           <div className='stats-block' id='streak'>Streak: {streak}</div>
         </div>
-        <div className='check-block' ><input type='checkbox' checked={textIsColored} onChange={toggleTextColor} />Color Text</div>
-        <button onClick={toggleTheme}>Toggle Theme</button>
+
+        <div className='option'>
+          <label class="switch">
+            <input type="checkbox" checked={textIsColored} onChange={toggleTextColor} />
+            <span class="slider round"></span>
+          </label>
+          <span className='option-label'>RGB Color Text</span>
+        </div>
+        <div className='option'>
+          <label class="switch">
+            <input type="checkbox" onChange={toggleTheme} />
+            <span class="slider round"></span>
+          </label>
+          <span className='option-label'>Dark Mode</span>
+        </div>
       </div>
     </>
   );
