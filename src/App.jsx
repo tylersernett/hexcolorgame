@@ -116,19 +116,20 @@ function App() {
   }
 
   const BOXSTYLE = {
-    position: 'relative',
+    // position: 'relative',
     backgroundColor: `#${hexArray[0].hexString}`,
-    width: 'auto',
+    // width: 'auto',
     height: '30%',
     margin: 'auto',
     textAlign: 'center',
-    padding: '0',
+    // padding: '0',
     borderRadius: '8px',
     transition: '0.5s background-color ease-in-out',
+    display: 'flex',
+    // flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
-
-  //TODO: dark mode
-  //TODO: colored text shows degree of color
 
   return (
     <>
@@ -137,6 +138,16 @@ function App() {
           <h1>HEX<span className='hex-text' style={HEXSTYLE}>⬣</span></h1><span className='sub-title'>⁄⁄color trainer</span>
         </div>
         <div className='color-rectangle' style={BOXSTYLE}>
+          <div className='directions'>select the RGB hexcode of the displayed color <br />
+            <div className='arrow floating' style={{display:''}}>
+              <svg fill="#ffffff" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="-51.2 -51.2 614.42 614.42" stroke="#ffffff">
+                {/* <g id="SVGRepo_bgCarrier" stroke-width="0"><rect x="-51.2" y="-51.2" width="614.42" height="614.42" rx="307.21" fill-opacity='0.25' strokewidth="0"></rect></g> */}
+                <g id="SVGRepo_iconCarrier"> <g> <g> <g>
+                  <path d="M248.436,295.417c4.16,4.16,10.88,4.16,15.04,0L434.143,124.75c4.053-4.267,3.947-10.987-0.213-15.04 c-4.16-3.947-10.667-3.947-14.827,0L256.009,272.803L92.916,109.71c-4.267-4.053-10.987-3.947-15.04,0.213 c-3.947,4.16-3.947,10.667,0,14.827L248.436,295.417z"></path>
+                  {/* <path d="M501.343,383.95H10.996c-5.333,0-10.133,3.84-10.88,9.067c-0.96,6.613,4.16,12.267,10.56,12.267h490.347 c5.333,0,10.133-3.84,10.88-9.067C512.863,389.603,507.743,383.95,501.343,383.95z"></path> */}
+                </g> </g> </g> </g></svg>
+            </div>
+          </div>
         </div>
 
         <div className='answer-box'>
@@ -145,7 +156,7 @@ function App() {
               key={hexObj.hexString}
               onClick={hexObj.correct ? rightGuess : () => wrongGuess(hexObj)}
               style={hexObj.touched ? { backgroundColor: `#${hexObj.hexString}` } : {}}>#{
-                textIsColored ?
+                textIsColored ? //add RGB coloring to text
                   <>
                     <span style={{ color: '#EE0000' }}>{hexObj.hexString.slice(0, 2)}</span>
                     <span style={{ color: '#00BB00' }}>{hexObj.hexString.slice(2, 4)}</span>
@@ -155,7 +166,7 @@ function App() {
             </button>
           )}
         </div>
-        
+
         <div className='stats'>
           <div className='stats-block' id='score' >Score: {score}</div>
           <div className='stats-block' id='pipe'>\\</div>
