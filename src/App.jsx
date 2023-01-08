@@ -80,7 +80,9 @@ function App() {
       }
     }));
     console.log('touched:', shuffledArray)
-    setScore((prevScore) => prevScore - 1);
+    if (hexObj.touched === false) {
+      setScore((prevScore) => prevScore - 1);
+    }
     setStreak(0);
   }
 
