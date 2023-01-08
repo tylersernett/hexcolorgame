@@ -21,7 +21,7 @@ function App() {
   const [shuffledArray, setShuffledArray] = useState(shuffleArray(hexArray))
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
 
   //update the shuffle array anytime hex array is updated
   useEffect(() => {
@@ -185,7 +185,7 @@ function App() {
             <input type="checkbox" onChange={toggleTheme} />
             <span class="slider round"></span>
           </label>
-          <span className='option-label'>Dark Mode</span>
+          <span className='option-label'>Light Theme</span>
         </div>
       </div>
     </>
