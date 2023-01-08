@@ -19,6 +19,11 @@ function App() {
     { hexString: '0000FF', correct: false, touched: false },
   ]);
   const [shuffledArray, setShuffledArray] = useState(shuffleArray(hexArray))
+  const [feedbackText, setFeedbackText] = useState("select the RGB hexcode of the displayed color");
+  const feedbackCorrect = ["Nice!", "Correct!", "Great!"]
+  const [correctIndex, setCorrectIndex] = useState(0);
+  const feedbackIncorrect = ["Not quite...", "Incorrect...", "Wrong..."];
+  const [incorrectIndex, setIncorrectIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
   const [theme, setTheme] = useState('dark');
@@ -65,6 +70,8 @@ function App() {
     setHexArray((generateHexes(difficulty)));
     setScore((prevScore) => prevScore + 1);
     setStreak((prevStreak) => prevStreak + 1);
+    setFeedbackText(feedbackCorrect[correctIndex % feedbackCorrect.length]);
+    setCorrectIndex((prev) => prev + 1);
   }
 
   const wrongGuess = (hexObj) => {
@@ -84,6 +91,8 @@ function App() {
       setScore((prevScore) => prevScore - 1);
     }
     setStreak(0);
+    setFeedbackText(feedbackIncorrect[incorrectIndex % feedbackIncorrect.length]);
+    setIncorrectIndex((prev) => prev + 1);
   }
 
   const toggleTextColor = () => {
@@ -140,8 +149,8 @@ function App() {
           <h1>HEX<span className='hex-text' style={HEXSTYLE}>⬣</span></h1><span className='sub-title'>⁄⁄color trainer</span>
         </div>
         <div className='color-rectangle' style={BOXSTYLE}>
-          <div className='directions'>select the RGB hexcode of the displayed color <br />
-            <div className='arrow floating' style={{display:''}}>
+          <div className='directions'>{feedbackText}<br />
+            <div className='arrow floating' style={{ display: '' }}>
               <svg fill="#ffffff" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="-51.2 -51.2 614.42 614.42" stroke="#ffffff">
                 {/* <g id="SVGRepo_bgCarrier" stroke-width="0"><rect x="-51.2" y="-51.2" width="614.42" height="614.42" rx="307.21" fill-opacity='0.25' strokewidth="0"></rect></g> */}
                 <g id="SVGRepo_iconCarrier"> <g> <g> <g>
