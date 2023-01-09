@@ -209,6 +209,9 @@ useEffect(() => {
           </label>
           <span className='option-label'>Light Theme</span>
         </div>
+        <div className='footer'>
+          ©<a href="https://github.com/tylersernett/" target='_blank'>Tyler Sernett</a>
+        </div>
       </div>
     </>
   );
