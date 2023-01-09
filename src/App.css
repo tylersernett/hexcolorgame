@@ -127,6 +127,7 @@ h1 {
   border-radius: 8px;
   margin-bottom: 2px;
   border-color: #ddd;
+  color: #333;
 }
 
 .answer-button:hover {
