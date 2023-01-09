@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/hexcolorgame/static/css/main.15cc939a.css",
+    "main.js": "/hexcolorgame/static/js/main.ffbc4efb.js",
+    "static/js/787.ae1519d9.chunk.js": "/hexcolorgame/static/js/787.ae1519d9.chunk.js",
+    "index.html": "/hexcolorgame/index.html",
+    "main.15cc939a.css.map": "/hexcolorgame/static/css/main.15cc939a.css.map",
+    "main.ffbc4efb.js.map": "/hexcolorgame/static/js/main.ffbc4efb.js.map",
+    "787.ae1519d9.chunk.js.map": "/hexcolorgame/static/js/787.ae1519d9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.15cc939a.css",
+    "static/js/main.ffbc4efb.js"
+  ]
+}
