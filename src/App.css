@@ -1,11 +1,13 @@
 .dark {
   background-color: #333;
   color: #fff;
+  --defaultText: #ffffff;
 }
 
 .light {
   background-color: #fff;
   color: #333;
+  --defaultText: #333333;
 }
 
 .title {
@@ -244,4 +246,16 @@ input:checked+.slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.footer {
+  margin-top: 4rem;
+}
+
+a:link {
+  color: var(--defaultText);
+}
+
+a:visited {
+  color: var(--defaultText);
 }
