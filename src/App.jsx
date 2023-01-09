@@ -24,6 +24,7 @@ function App() {
   const [correctIndex, setCorrectIndex] = useState(0);
   const feedbackIncorrect = ["Not quite...", "Incorrect...", "Wrong..."];
   const [incorrectIndex, setIncorrectIndex] = useState(0);
+  const [hideFeedback, setHideFeedback] = useState(false);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
   const [theme, setTheme] = useState('dark');
@@ -64,6 +65,14 @@ function App() {
     }
     return string;
   }
+
+//when answer is submitted, momentarily hide (remove the fade class), then add the fade class to restart the animation
+useEffect(() => {
+  setHideFeedback(true);
+  setTimeout(() => {
+    setHideFeedback(false);
+  }, 10);
+}, [correctIndex, incorrectIndex])
 
   const rightGuess = () => {
     console.log('right')
@@ -123,6 +132,7 @@ function App() {
 
   const HEXSTYLE = {
     color: `#${hexArray[0].hexString}`,
+    // color: correctIndex > 0 ? `#${hexArray[0].hexString}` : '',
     transition: '0.7s color ease-in-out',
   }
 
@@ -149,8 +159,9 @@ function App() {
           <h1>HEX<span className='hex-text' style={HEXSTYLE}>⬣</span></h1><span className='sub-title'>⁄⁄color trainer</span>
         </div>
         <div className='color-rectangle' style={BOXSTYLE}>
-          <div className='directions'>{feedbackText}<br />
-            <div className='arrow floating' style={{ display: '' }}>
+          <div className={(correctIndex === 0 || hideFeedback) ? 'directions' : 'directions fading'}>{feedbackText}<br />
+            {/* remove arrow after first correct answer */}
+            <div className='arrow floating' style={{visibility: correctIndex > 0 ? 'hidden': '' } }>
               <svg fill="#ffffff" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="-51.2 -51.2 614.42 614.42" stroke="#ffffff">
                 {/* <g id="SVGRepo_bgCarrier" stroke-width="0"><rect x="-51.2" y="-51.2" width="614.42" height="614.42" rx="307.21" fill-opacity='0.25' strokewidth="0"></rect></g> */}
                 <g id="SVGRepo_iconCarrier"> <g> <g> <g>

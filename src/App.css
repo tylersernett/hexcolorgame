@@ -65,7 +65,7 @@ h1 {
 
 .directions {
   margin-top:9vh;
-  padding: 10px;
+  /* padding: 10px; */
   color: white;
   font-size: calc(100% + .5vw);
 }
@@ -81,14 +81,24 @@ h1 {
   animation-duration: 3s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
-  /* margin-left: 30px; */
-  /* margin-top: 5px; */
 }
 
 @keyframes floating {
   0% { transform: translate(0,  0px); }
   50%  { transform: translate(0, 10px); }
   100%   { transform: translate(0, -0px); }   
+}
+
+.fading {
+  animation-name: fading;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+@keyframes fading {
+  0% {color: white}
+  100% {color: rgba(255, 255, 255, 0)}
 }
 
 .answer-box {
@@ -110,7 +120,7 @@ h1 {
 }
 
 .answer-button:hover {
-  background-color: #EEE;
+  background-color: #DDD;
   border-color: #BBB;
 }
 
