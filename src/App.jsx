@@ -66,13 +66,13 @@ function App() {
     return string;
   }
 
-//when answer is submitted, momentarily hide (remove the fade class), then add the fade class to restart the animation
-useEffect(() => {
-  setHideFeedback(true);
-  setTimeout(() => {
-    setHideFeedback(false);
-  }, 10);
-}, [correctIndex, incorrectIndex])
+  //when answer is submitted, momentarily hide (remove the fade class), then add the fade class to restart the animation
+  useEffect(() => {
+    setHideFeedback(true);
+    setTimeout(() => {
+      setHideFeedback(false);
+    }, 10);
+  }, [correctIndex, incorrectIndex])
 
   const rightGuess = () => {
     console.log('right')
@@ -141,13 +141,14 @@ useEffect(() => {
     backgroundColor: `#${hexArray[0].hexString}`,
     // width: 'auto',
     height: '30%',
-    margin: 'auto',
+    // margin: 'auto',
     textAlign: 'center',
     // padding: '0',
     borderRadius: '8px',
     transition: '0.5s background-color ease-in-out',
     display: 'flex',
     // flexDirection: 'column',
+    // flex: "1 1 auto",
     alignItems: 'center',
     justifyContent: 'center'
   }
@@ -161,7 +162,7 @@ useEffect(() => {
         <div className='color-rectangle' style={BOXSTYLE}>
           <div className={(correctIndex === 0 || hideFeedback) ? 'directions' : 'directions fading'}>{feedbackText}<br />
             {/* remove arrow after first correct answer */}
-            <div className='arrow floating' style={{visibility: correctIndex > 0 ? 'hidden': '' } }>
+            <div className='arrow floating' style={{ visibility: correctIndex > 0 ? 'hidden' : '' }}>
               <svg fill="#ffffff" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="-51.2 -51.2 614.42 614.42" stroke="#ffffff">
                 {/* <g id="SVGRepo_bgCarrier" stroke-width="0"><rect x="-51.2" y="-51.2" width="614.42" height="614.42" rx="307.21" fill-opacity='0.25' strokewidth="0"></rect></g> */}
                 <g id="SVGRepo_iconCarrier"> <g> <g> <g>
@@ -177,7 +178,7 @@ useEffect(() => {
             <button className='answer-button'
               key={hexObj.hexString}
               onClick={hexObj.correct ? rightGuess : () => wrongGuess(hexObj)}
-              style={hexObj.touched ? { backgroundColor: `#${hexObj.hexString}` } : {}}>#{
+              style={hexObj.touched ? { backgroundColor: `#${hexObj.hexString}` } : {}}><span className='hashtag' aria-hidden='true'>#</span>{
                 textIsColored ? //add RGB coloring to text
                   <>
                     <span style={{ color: '#EE0000' }}>{hexObj.hexString.slice(0, 2)}</span>
@@ -209,6 +210,9 @@ useEffect(() => {
           </label>
           <span className='option-label'>Light Theme</span>
         </div>
+
+        <div className='spacer'></div>
+
         <footer className='footer'>
           ©<a href="https://github.com/tylersernett/">Tyler Sernett</a>
         </footer>
