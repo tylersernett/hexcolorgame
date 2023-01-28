@@ -57,6 +57,32 @@ function App() {
     return hexes
   }
 
+  //TODO: use algo to define ranges instead of random generation
+  //dificulty: # of splits  [3 answers, 3 splits]
+  //split each R,G,B value ...
+  //range:   0123456789ABCDE   or   123456789ABCDEF
+  //split=3    01234 56789 ABCDE    or   12345 6789A BCDEF
+  //buffer=2    123   678   BCD     spread=3
+  //buffer=3   012    678    CDE    spread=3
+  //trim=2      123   678   BCD     
+  //trim=4       2     7     C    
+  
+  //split=3    01234 56789 ABCDE 
+  //Randselect1    4
+  //apply buffer: process 56789 if val > buffer+Randselect1 (buffer=2, so 56 excluded)
+  //Randselect2          9
+  //apply buffer: process ABCDE if val > buffer+Randselect2 (buffer=2, so AB excluded)
+  //Randselect3              C
+  //shuffle so order is randomized
+  //Answer1 R = Randselect2
+  //Answer2 R = Randselect3
+  //Answer3 R = Randselect1
+  //repeat for G, B values
+
+
+  //1 split it
+  //2 trim edges
+  //3 select random from what remains
   const randomHex = () => {
     const hexChar = "0123456789ABCDEF";
     let string = ""
@@ -192,7 +218,7 @@ function App() {
 
         <div className='stats'>
           <div className='stats-block' id='score' >Score: {score}</div>
-          <div className='stats-block' id='pipe'>\\</div>
+          <div className='stats-block' id='pipe'>⁄⁄</div>
           <div className='stats-block' id='streak'>Streak: {streak}</div>
         </div>
 
