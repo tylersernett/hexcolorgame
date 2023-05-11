@@ -199,10 +199,28 @@ function App() {
   }
 
   return (
-    <>
       <div className={`container ${theme}`}>
         <div className='title' >
-          <h1>HEX<span className='hex-text' style={HEXSTYLE}>⬣</span></h1><span className='sub-title'>⁄⁄color trainer</span>
+          {/* <h1>HEX<span className='hex-text' style={HEXSTYLE}>⬣</span></h1><span className='sub-title'>⁄⁄color trainer</span> */}
+          <h1 style={{ display: 'flex', alignItems: 'center' }}>
+            HEX<span className='hex-text' style={HEXSTYLE}>
+              <svg
+                fill="currentColor"
+                // fill={hexArray[0].hexString}
+                height="9.75vw"
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 184.751 184.751"
+                style={{ margin: 'auto' }} // Add this line to center the SVG vertically
+              >
+                <path d="M0,92.375l46.188-80h92.378l46.185,80l-46.185,80H46.188L0,92.375z" />
+              </svg>
+            </span>
+          </h1>
+          <span className='sub-title'>⁄⁄color trainer</span>
+
+
         </div>
         <div className='color-rectangle' style={BOXSTYLE}>
           <div className={(correctIndex === 0 || hideFeedback) ? 'directions' : 'directions fading'}>{feedbackText}<br />
@@ -262,7 +280,6 @@ function App() {
           ©<a href="https://github.com/tylersernett/">Tyler Sernett</a>
         </footer>
       </div>
-    </>
   );
 }
 
