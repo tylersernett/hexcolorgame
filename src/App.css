@@ -1,3 +1,13 @@
+*:focus-visible {
+  outline: 2px solid #ff00ff;
+  outline-offset: 3px;
+}
+
+input[type=checkbox]:focus-visible {
+  outline-offset: 21px;
+  outline-width: 8px;
+}
+
 .dark {
   background-color: #333;
   color: #fff;
@@ -55,33 +65,6 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-@media only screen and (max-width: 600px) {
-  .title {
-    text-align: center;
-  }
-
-  h1 {
-    margin-top: -5%;
-  }
-
-  .sub-title {
-    text-align: center;
-    transform: translate(20%, -80%);
-  }
-
-  .container {
-    width: 60%;
-  }
-
-  .answer-box {
-    flex-direction: column;
-  }
-
-  .answer-button {
-    padding: 4px;
-  }
 }
 
 .directions {
@@ -216,9 +199,9 @@ h1 {
 
 /* Hide default HTML checkbox */
 .switch input {
-  opacity: 0;
   width: 0;
   height: 0;
+  transform: translateY(1px);
 }
 
 /* The slider */
@@ -247,7 +230,7 @@ h1 {
 }
 
 input:checked+.slider {
-  background-color: #2195f3ca;
+  background-color: #2195f3;
 }
 
 input:checked+.slider:before {
@@ -268,6 +251,7 @@ input:checked+.slider:before {
 .spacer {
   flex: 1 1 auto;
 }
+/* ---------------- */
 
 footer {
   flex: 0 1 40px;
@@ -280,4 +264,31 @@ a:link {
 
 a:visited {
   color: var(--defaultText);
+}
+
+@media only screen and (max-width: 600px) {
+  .title {
+    text-align: center;
+  }
+
+  h1 {
+    margin-top: -5%;
+  }
+
+  .sub-title {
+    text-align: center;
+    transform: translate(20%, -80%);
+  }
+
+  .container {
+    width: 60%;
+  }
+
+  .answer-box {
+    flex-direction: column;
+  }
+
+  .answer-button {
+    padding: 4px;
+  }
 }
