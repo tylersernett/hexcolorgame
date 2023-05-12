@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/hexcolorgame/static/css/main.6734703e.css",
-    "main.js": "/hexcolorgame/static/js/main.e7e32dbe.js",
+    "main.css": "/hexcolorgame/static/css/main.4c4ee480.css",
+    "main.js": "/hexcolorgame/static/js/main.f8da8944.js",
     "static/js/787.ae1519d9.chunk.js": "/hexcolorgame/static/js/787.ae1519d9.chunk.js",
     "index.html": "/hexcolorgame/index.html",
-    "main.6734703e.css.map": "/hexcolorgame/static/css/main.6734703e.css.map",
-    "main.e7e32dbe.js.map": "/hexcolorgame/static/js/main.e7e32dbe.js.map",
+    "main.4c4ee480.css.map": "/hexcolorgame/static/css/main.4c4ee480.css.map",
+    "main.f8da8944.js.map": "/hexcolorgame/static/js/main.f8da8944.js.map",
     "787.ae1519d9.chunk.js.map": "/hexcolorgame/static/js/787.ae1519d9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6734703e.css",
-    "static/js/main.e7e32dbe.js"
+    "static/css/main.4c4ee480.css",
+    "static/js/main.f8da8944.js"
   ]
 }
