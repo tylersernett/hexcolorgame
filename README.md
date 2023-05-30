@@ -158,12 +158,44 @@ Solution: new algorithm splits the possible of ranges of hue, saturation, and va
     return hex.length === 1 ? "0" + hex : hex;
   }
 ```
-<h2>Documentation for the <code>generateHexes</code> Function</h2><p>The <code>generateHexes</code> function is a utility function that generates an array of objects representing hexadecimal colors. Each object in the array contains the following properties:</p><ul><li><code>hexString</code>: The hexadecimal representation of the color.</li><li><code>correct</code>: A boolean value indicating whether the color is the correct answer (always true for the first color).</li><li><code>touched</code>: A boolean value indicating whether the color has been selected or interacted with (initially false for all colors).</li></ul><h3>Usage</h3><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-javascript"><span class="hljs-keyword">import</span> generateHexes <span class="hljs-keyword">from</span> <span class="hljs-string">'./generateHexes'</span>;
+Documentation for the `generateHexes` Function
+----------------------------------------------
 
-<span class="hljs-keyword">const</span> numberOfColors = <span class="hljs-number">5</span>;
-<span class="hljs-keyword">const</span> hexes = <span class="hljs-title function_">generateHexes</span>(numberOfColors);
-<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hexes);
-</code></div></div></pre><h3>Parameters</h3><ul><li><code>num</code> (number): The number of colors to generate.</li></ul><h3>Return Value</h3><p>The function returns an array of objects representing hexadecimal colors.</p><h3>Implementation Details</h3><ol><li>The function first generates an array of color strings using the <code>generateColors</code> helper function.</li><li>It then creates an object for each color in the array, setting the <code>hexString</code>, <code>correct</code>, and <code>touched</code> properties.</li><li>The objects are pushed into an array.</li><li>Finally, the array of color objects is returned.</li></ol><h3><code>generateColors</code> Helper Function</h3><p>The <code>generateColors</code> function is a helper function used by <code>generateHexes</code> to generate an array of colors. It ensures that the colors are spread throughout the color wheel in terms of hue, saturation, and value.</p><h3><code>hsvToRgb</code> Helper Function</h3><p>The <code>hsvToRgb</code> function converts an HSV (Hue, Saturation, Value) color representation to an RGB (Red, Green, Blue) color representation. It is used by the <code>generateColors</code> function to convert the generated HSV values to RGB values.</p><h3><code>rgbToHex</code> and <code>componentToHex</code> Helper Functions</h3><p>The <code>rgbToHex</code> function converts RGB color values to a hexadecimal color string. It is used by the <code>generateColors</code> function to convert the generated RGB values to hexadecimal color strings. The <code>componentToHex</code> function is a helper function used by <code>rgbToHex</code> to convert individual color components (Red, Green, Blue) to their hexadecimal representation.</p>
+The `generateHexes` function is a utility function that generates an array of objects representing hexadecimal colors. Each object in the array contains the following properties:
+
+*   `hexString`: The hexadecimal representation of the color.
+*   `correct`: A boolean value indicating whether the color is the correct answer (always true for the first color).
+*   `touched`: A boolean value indicating whether the color has been selected or interacted with (initially false for all colors).
+
+### Usage
+
+`import generateHexes from './generateHexes';  const numberOfColors = 5; const hexes = generateHexes(numberOfColors); console.log(hexes);`
+
+### Parameters
+
+*   `num` (number): The number of colors to generate.
+
+### Return Value
+
+The function returns an array of objects representing hexadecimal colors.
+
+### Implementation Details
+
+1.  The function first generates an array of color strings using the `generateColors` helper function.
+2.  It then creates an object for each color in the array, setting the `hexString`, `correct`, and `touched` properties.
+3.  The objects are pushed into an array.
+4.  Finally, the array of color objects is returned.
+
+### `generateColors` Helper Function
+
+The `generateColors` function is a helper function used by `generateHexes` to generate an array of colors. It ensures that the colors are spread throughout the color wheel in terms of hue, saturation, and value.
+
+### `hsvToRgb` Helper Function
+
+The `hsvToRgb` function converts an HSV (Hue, Saturation, Value) color representation to an RGB (Red, Green, Blue) color representation. It is used by the `generateColors` function to convert the generated HSV values to RGB values.
+
+### `rgbToHex` and `componentToHex` Helper Functions
+The `rgbToHex` function converts RGB color values to a hexadecimal color string. It is used by the `generateColors` function to convert the generated RGB values to hexadecimal color strings. The `componentToHex` function is a helper function used by `rgbToHex` to convert individual color components (Red, Green, Blue) to their hexadecimal representation.
 
 ---
 
