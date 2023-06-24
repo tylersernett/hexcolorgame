@@ -3,6 +3,29 @@ import './App.css';
 import findBiggerBWContrast from './findBiggerBWContrast';
 import generateHexes from './generateHexes';
 
+const Title = ({hexArray}) => {
+  return (
+    <div className='title' >
+      <h1 style={{ display: 'flex', alignItems: 'center' }}>
+        HEX<span className='hex-text' style={{ color: `#${hexArray[0].hexString}` }}>
+          <svg
+            fill="currentColor"
+            // height="9.75vw"
+            version="1.1"
+            id="Capa_1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 184.751 184.751"
+            style={{ height: "9.75vw", margin: 'auto' }} // Add this line to center the SVG vertically
+          >
+            <path d="M0,92.375l46.188-80h92.378l46.185,80l-46.185,80H46.188L0,92.375z" />
+          </svg>
+        </span>
+      </h1>
+      <span className='sub-title'>⁄⁄color trainer</span>
+    </div>
+  )
+}
+
 function App() {
   //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
   const shuffleArray = (unshuffled) => {
@@ -103,24 +126,7 @@ function App() {
 
   return (
     <div className={`container ${theme}`}>
-      <div className='title' >
-        <h1 style={{ display: 'flex', alignItems: 'center' }}>
-          HEX<span className='hex-text' style={{ color: `#${hexArray[0].hexString}` }}>
-            <svg
-              fill="currentColor"
-              // height="9.75vw"
-              version="1.1"
-              id="Capa_1"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 184.751 184.751"
-              style={{ height: "9.75vw", margin: 'auto' }} // Add this line to center the SVG vertically
-            >
-              <path d="M0,92.375l46.188-80h92.378l46.185,80l-46.185,80H46.188L0,92.375z" />
-            </svg>
-          </span>
-        </h1>
-        <span className='sub-title'>⁄⁄color trainer</span>
-      </div>
+      <Title hexArray={hexArray} />
 
       <div className='color-rectangle' style={{ backgroundColor: `#${hexArray[0].hexString}` }}>
         <div className={(correctIndex === 0 || hideFeedback) ? 'directions' : 'directions fading'} style={{ color: feedbackTextColor }}>{feedbackText}<br />
@@ -171,7 +177,6 @@ function App() {
           );
         })}
       </div>
-
 
       <div className='stats'>
         <div className='stats-block' id='score' >Score: {score}</div>
