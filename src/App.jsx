@@ -43,7 +43,7 @@ function App() {
       setFeedbackTextColor(findBiggerBWContrast(`#${hexArray[0].hexString}`))
     }
     setShuffledArray(shuffleArray(hexArray));
-  }, [hexArray])
+  }, [hexArray, correctIndex])
 
   //set the number of color options each round
   useEffect(() => {
