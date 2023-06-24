@@ -3,6 +3,8 @@ import './App.css';
 import findBiggerBWContrast from './findBiggerBWContrast';
 import generateHexes from './generateHexes';
 import ColorRectangle from './ColorRectangle';
+import Option from './Option';
+import Stats from './Stats';
 import Title from './Title';
 
 function App() {
@@ -152,26 +154,9 @@ function App() {
         })}
       </div>
 
-      <div className='stats'>
-        <div className='stats-block' id='score' >Score: {score}</div>
-        <div className='stats-block' id='pipe'>⁄⁄</div>
-        <div className='stats-block' id='streak'>Streak: {streak}</div>
-      </div>
-
-      <div className='option'>
-        <label className="switch">
-          <input type="checkbox" checked={textIsColored} onChange={toggleTextColor} />
-          <span className="slider round"></span>
-        </label>
-        <span className='option-label'>RGB Color Text</span>
-      </div>
-      <div className='option'>
-        <label className="switch">
-          <input type="checkbox" onChange={toggleTheme} />
-          <span className="slider round"></span>
-        </label>
-        <span className='option-label'>Light Theme</span>
-      </div>
+      <Stats score={score} streak={streak}/>
+      <Option label='RGB Color Text' checked={textIsColored} onChange={toggleTextColor}/>
+      <Option label='Light Theme' checked={theme === 'light'} onChange={toggleTheme}/>
 
       <div className='spacer'></div>
 
