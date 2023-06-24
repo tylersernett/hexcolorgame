@@ -3,6 +3,7 @@ import './App.css';
 import findBiggerBWContrast from './findBiggerBWContrast';
 import generateHexes from './generateHexes';
 import ColorRectangle from './ColorRectangle';
+import Footer from './Footer';
 import Option from './Option';
 import Stats from './Stats';
 import Title from './Title';
@@ -154,15 +155,11 @@ function App() {
         })}
       </div>
 
-      <Stats score={score} streak={streak}/>
-      <Option label='RGB Color Text' checked={textIsColored} onChange={toggleTextColor}/>
-      <Option label='Light Theme' checked={theme === 'light'} onChange={toggleTheme}/>
-
+      <Stats score={score} streak={streak} />
+      <Option label='RGB Color Text' checked={textIsColored} onChange={toggleTextColor} />
+      <Option label='Light Theme' checked={theme === 'light'} onChange={toggleTheme} />
       <div className='spacer'></div>
-
-      <footer className='footer'>
-        ©<a href="https://github.com/tylersernett/">Tyler Sernett</a>
-      </footer>
+      <Footer />
     </div>
   );
 }
