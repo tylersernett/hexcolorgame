@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import findBiggerBWContrast from './findBiggerBWContrast';
 import generateHexes from './generateHexes';
+import ColorRectangle from './ColorRectangle';
 import Title from './Title';
 
 function App() {
@@ -105,18 +106,13 @@ function App() {
   return (
     <div className={`container ${theme}`}>
       <Title hexArray={hexArray} />
-
-      <div className='color-rectangle' style={{ backgroundColor: `#${hexArray[0].hexString}` }}>
-        <div className={(correctIndex === 0 || hideFeedback) ? 'directions' : 'directions fading'} style={{ color: feedbackTextColor }}>{feedbackText}<br />
-          {/* remove arrow after first correct answer */}
-          <div className='arrow floating' style={{ visibility: correctIndex > 0 ? 'hidden' : '' }}>
-            <svg fill="#ffffff" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="-51.2 -51.2 614.42 614.42" stroke="#ffffff">
-              <g id="SVGRepo_iconCarrier"> <g> <g> <g>
-                <path d="M248.436,295.417c4.16,4.16,10.88,4.16,15.04,0L434.143,124.75c4.053-4.267,3.947-10.987-0.213-15.04 c-4.16-3.947-10.667-3.947-14.827,0L256.009,272.803L92.916,109.71c-4.267-4.053-10.987-3.947-15.04,0.213 c-3.947,4.16-3.947,10.667,0,14.827L248.436,295.417z"></path>
-              </g> </g> </g> </g></svg>
-          </div>
-        </div>
-      </div>
+      <ColorRectangle
+        hexString={hexArray[0].hexString}
+        feedbackText={feedbackText}
+        correctIndex={correctIndex}
+        hideFeedback={hideFeedback}
+        feedbackTextColor={feedbackTextColor}
+      />
 
       <div className='answer-box'>
         {shuffledArray.map((hexObj) => {
