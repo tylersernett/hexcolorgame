@@ -3,6 +3,8 @@ A hexadecimal training game where users guess the hexcode of the displayed color
 ## Live Demo:
 https://tylersernett.github.io/hexcolorgame
 
+![screenshot](./readme/screenshot.png)
+
 ## Notes:
 #### Flex: how to 'pan' two items hard left and hard right:
 
